@@ -1,20 +1,25 @@
-import React, {useContext} from 'react';
-import {TwitterContext} from "../utils/context.js";
 
-const Avatar = ({size}) => {
+import {TwitterContext} from "../utils/context.ts";
+import {useContext} from "react";
+
+interface  Props {
+    size?: 'small'
+}
+
+const Avatar = ({size}: Props) => {
 
     const {user, changeAvatar, changeAvatarName} = useContext(TwitterContext)
     return (
        <img
            onClick={() => {
                const url = prompt("Enter Avatar URL:");
-               changeAvatar(url)
+               changeAvatar(url!)
            }}
 
            onContextMenu={(e) => {
                e.preventDefault();
                const name = prompt("Enter User Name:");
-               changeAvatarName(name);
+               changeAvatarName(name!);
            }}
 
            className={`user-avatar ${size || ''}`}

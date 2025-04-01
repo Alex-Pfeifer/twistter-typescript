@@ -1,6 +1,7 @@
-import React, {useContext} from 'react';
-import Avatar from "./Avatar.jsx";
-import {TwitterContext} from "../utils/context.js";
+
+import Avatar from "./Avatar.tsx";
+import {TwitterContext} from "../utils/context.ts";
+import {useContext} from "react";
 
 const Stats = () => {
     const {
@@ -13,7 +14,7 @@ const Stats = () => {
     return (
         <div className={'user-stats'}>
             <div>
-                <Avatar user={user}/>
+                <Avatar/>
                 {user.name}
             </div>
             <div className={'stats'}>

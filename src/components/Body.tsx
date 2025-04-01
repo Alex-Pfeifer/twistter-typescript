@@ -1,6 +1,6 @@
-import React from 'react';
-import Content from "./Content.jsx";
-import Sidebar from "./Sidebar.jsx";
+
+import Content from "./Content.tsx";
+import Sidebar from "./Sidebar.tsx";
 
 const Body = () => {
     return (

@@ -1,39 +1,30 @@
 import './App.css'
-import Body from "./components/Body.jsx";
-import Navigation from "./components/Navigation.jsx";
+import Body from "./components/Body.tsx";
+import Navigation from "./components/Navigation.tsx";
 import {useState} from "react";
-import {TwitterContext} from "./utils/context.js";
+import {TwitterContext} from "./utils/context.ts";
+import {Stats, StatsType, User} from "./utils/types";
 
 function App() {
-    const [user, setUser] = useState({
+    const [user, setUser] = useState<User>({
         name: 'Monster',
         avatar: 'https://gravatar.com/avatar/000?d=monsterid'
     });
 
-    const [stats, setStats] = useState({
+    const [stats, setStats] = useState<Stats>({
         followers: 0,
         following: 0
     });
 
-    const changeAvatar = url => {
-        // setUser(prevState => ({...prevState, avatar: url || user.avatar}));
+    const changeAvatar = (url: string) => {
         setUser( {...user, avatar: url || user.avatar});
     }
 
-    const changeAvatarName = name => {
+    const changeAvatarName = (name: string) => {
         setUser( {...user, name: name || user.name});
     }
 
-    // const changeFollowers = sum => {
-    //     setStats(prevStats => ({...prevStats, followers: prevStats.followers + sum < 0 ? 0 : prevStats.followers + sum}));
-    // }
-    //
-    // const changeFollowing = sum => {
-    //     setStats(prevStats => ({...prevStats, following: prevStats.following + sum < 0 ? 0 : prevStats.following + sum}));
-    // }
-
-
-    const changeStats = (statsTyte, sum) => {
+    const changeStats = (statsTyte: StatsType, sum: number) => {
         setStats(prevStats => {
             let res = prevStats[statsTyte] +sum;
             res = res < 0 ? 0 : res;
@@ -48,8 +39,6 @@ function App() {
                 stats,
                 changeAvatar,
                 changeAvatarName,
-                // changeFollowers,
-                // changeFollowing
                 changeStats
             }}>
                 <Navigation/>
